@@ -5,8 +5,8 @@ public class Rope : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D hookRigidbody;
     [SerializeField] private GameObject linkPrefab;
-
     [SerializeField] private int linkNumbers = 7;
+    [SerializeField] private Weight weight;
 
     private void Start()
     {
@@ -21,7 +21,11 @@ public class Rope : MonoBehaviour
             GameObject link = Instantiate(linkPrefab, transform);
             HingeJoint2D joint2D = link.GetComponent<HingeJoint2D>();
             joint2D.connectedBody = previousRB;
-            previousRB = link.GetComponent<Rigidbody2D>();
+
+            if (i < linkNumbers - 1)
+                previousRB = link.GetComponent<Rigidbody2D>();
+            else
+                weight.GenerateWeight(link.GetComponent<Rigidbody2D>());
         }
     }
 }
