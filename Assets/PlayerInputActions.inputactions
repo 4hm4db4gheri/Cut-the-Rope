@@ -1,0 +1,34 @@
+{
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "28cab2d2-dd30-4d3f-a020-e22e2fd21e67",
+            "actions": [
+                {
+                    "name": "Cut",
+                    "type": "Value",
+                    "id": "acb4f2e3-5a7c-4ea8-8c06-3a941e1b954f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7d0e5061-fea4-4a03-b16f-c3a804490212",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cut",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
