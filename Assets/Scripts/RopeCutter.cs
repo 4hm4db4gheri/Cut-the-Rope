@@ -18,17 +18,21 @@ public class RopeCutter : MonoBehaviour
         playerInputActions.Player.Cut.performed += Cut;
     }
 
-    public void Cut(InputAction.CallbackContext context){
+    public void Cut(InputAction.CallbackContext context)
+    {
         RaycastHit2D hitInMobile = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Touchscreen.current.position.ReadValue()), Vector2.zero);
         if (hitInMobile.collider != null)
         {
             if (hitInMobile.collider.CompareTag("Link"))
             {
                 parentRope = hitInMobile.transform.parent.GetComponent<Rope>();
-                Destroy(hitInMobile.collider.gameObject);
-                for (int i = 1; i < parentRope.linkNumbers + 1; i++)
+                if (!(parentRope.transform.childCount < parentRope.linkNumbers + 1))
                 {
-                    Destroy(parentRope.transform.GetChild(i).gameObject, distroyLinksDuration);
+                    Destroy(hitInMobile.collider.gameObject);
+                    for (int i = 1; i < parentRope.linkNumbers + 1; i++)
+                    {
+                        Destroy(parentRope.transform.GetChild(i).gameObject, distroyLinksDuration);
+                    }
                 }
             }
         }
@@ -63,7 +67,7 @@ public class RopeCutter : MonoBehaviour
     //             Destroy(hitInPC.collider.gameObject);
     //         }
     //     }
-        
+
     //     */
     // }
 }
