@@ -13,4 +13,14 @@ public class Weight : MonoBehaviour
         joint.anchor = Vector2.zero;
         joint.connectedAnchor = new Vector2(0, -distanceFromChainEnd);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bascket"))
+        {
+            GameManager.instance.Win();
+        }
+    }
+
+
 }
