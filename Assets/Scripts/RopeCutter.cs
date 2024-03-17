@@ -17,13 +17,26 @@ public class RopeCutter : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero);
-        if (hit.collider != null)
+        RaycastHit2D hitInMobile = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Touchscreen.current.position.ReadValue()), Vector2.zero);
+        if (hitInMobile.collider != null)
         {
-            if (hit.collider.CompareTag("Link"))
+            if (hitInMobile.collider.CompareTag("Link"))
             {
-                Destroy(hit.collider.gameObject);
+                Destroy(hitInMobile.collider.gameObject);
             }
         }
+
+        /*
+        // For PC
+        RaycastHit2D hitInPC = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero);
+        if (hitInPC.collider != null)
+        {
+            if (hitInPC.collider.CompareTag("Link"))
+            {
+                Destroy(hitInPC.collider.gameObject);
+            }
+        }
+        
+        */
     }
 }
