@@ -26,6 +26,7 @@ public class RopeCutter : MonoBehaviour
             if (hitInMobile.collider.CompareTag("Link"))
             {
                 parentRope = hitInMobile.transform.parent.GetComponent<Rope>();
+                //checking is any link deleted or not
                 if (!(parentRope.transform.childCount < parentRope.linkNumbers + 1))
                 {
                     Destroy(hitInMobile.collider.gameObject);
